@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-align-items-stretch">
+      <ion-col size="12" size-md="12">
+        <ion-card class="speaker-card">
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <h3>Region : {{region}}</h3>
+              </ion-item>
+              <ion-item>
+                <h3 class="ion-float-left">Industry : {{industry}}</h3>
+                <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Related Topics:&nbsp;</h5>
+                <h5 class="ion-align-items-end" *ngFor="let topic of relatedTopics.slice(0,5);">{{topic}}{{countComma !== 4 ? ',' : ''}}&nbsp;</h5>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-stretch">
+      <ion-col size="12">
+          <ion-row class="ion-align-items-start">
+            <ion-col size="4" size-md="4" style="display: flex">
+              <ion-card class="speaker-card" style="height: 100%">
+                <ion-card-header>
+                  <ion-item detail="false" lines="none">
+                   Smart Analysis
+                  </ion-item>
+                </ion-card-header>
+                <ion-card-content style="height: 100%">
+                  <canvas #doughnutCanvas></canvas>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col size="8" size-md="8">
+              <ion-card class="speaker-card">
+                <ion-card-header>
+                  <ion-item detail="false" lines="none">
+                    Social Interest
+                  </ion-item>
+                </ion-card-header>
+                <ion-card-content>
+                  <canvas #lineCanvas></canvas>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-stretch">
+      <ion-col size="4" size-md="4">
+        <ion-card class="speaker-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none">
+              Customer Satisfaction
+            </ion-item>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <h3>Average Rating : {{this.ratingAvg}}</h3>
+              </ion-item>
+              <ion-item>
+                <h3>Search Radius : {{this.ratingRadius}} km</h3>
+              </ion-item>
+              <ion-item>
+                <h3>Region Area : {{this.ratingArea}} km</h3>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="4" size-md="4">
+        <ion-card class="speaker-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none">
+              Social Interest Metric
+            </ion-item>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <h3>Change in Trend: {{trendSlope * 100}} %</h3>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="4" size-md="4">
+        <ion-card class="speaker-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none">
+              Insights
+              <br>
+              (Powered by Google)
+            </ion-item>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item >
+                <h2>Trending Topics</h2>
+              </ion-item>
+              <ion-list>
+                <ion-item-sliding *ngFor="let topic of relatedTrendingTopics;">
+                  <ion-item>
+                    <ion-label *ngIf="topic.formattedValue === 'Breakout'" style="color: var(--ion-color-success)">
+                      <h3><b>{{topic.title}}</b> {{topic.formattedValue}}</h3>
+                    </ion-label>
+                    <ion-label *ngIf="topic.formattedValue !== 'Breakout'">
+                      <h3>{{topic.title}} {{topic.formattedValue}}</h3>
+                    </ion-label>
+                  </ion-item>
+                </ion-item-sliding>
+              </ion-list>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
