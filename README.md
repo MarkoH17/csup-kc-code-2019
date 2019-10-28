@@ -12,7 +12,7 @@ David Lichliter — [@dlichliter](https://github.com/dlichliter)
 
 Brandon Carlsen — [@btcarlsen](https://github.com/btcarlsen)
 
-## The Application - Sma[rt] (Social Media Analysis in Real Time)
+## The Application - SMA[RT] (Social Media Analysis in Real Time)
 Every new business starts with an idea; however, new businesses that do not test the feasibility of that idea are doomed to failure.
 Most small business owners cannot afford a full market analysis to test the feasibility of a product in a given market.
 The problem that this application aims to solve is that when you want to open your own business, prospective business owners struggle to 
